@@ -66,7 +66,7 @@ class AlarmGatherer:
          # We want to find events tomorrow, rather than another one today
          log.debug("Skipping events from today")
          time += datetime.timedelta(days=1) # Move to tomorrow
-         time = time.replace(hour=10,minute=0,second=0,microsecond=0) # Reset to 10am the next day
+         time = time.replace(hour=8,minute=0,second=0,microsecond=0) # Reset to 10am the next day
          # 10am is late enough that a night shift from today won't be caught, but a morning shift
          #  from tomorrow will be caught
 
