@@ -12,6 +12,8 @@ urls = (
     '/settings', 'set',
     '/reset', 'reset',
     '/api', 'api',
+    '/snooze', 'snooze',
+    '/endalarm', 'endalarm',
 )
 
 render = web.template.render('web/', cache=False, base='layout')
@@ -29,12 +31,12 @@ class index:
       alarmTime = ""
 
       if nextAlarm is not None:
-         alarmTime = nextAlarm.strftime("%I%M")
+         alarmTime = nextAlarm.strftime("%I:%M")
 
       return form.Form(
          form.Textbox("time",
             form.notnull,
-            form.regexp('[0-2][0-9][0-5][0-9]', 'Must be a 24hr time'),
+            form.regexp('[0-2][0-9]:?[0-5][0-9]', 'Must be a 24hr time'),
             description="Set alarm time",
             value = alarmTime,
          ),
@@ -208,6 +210,14 @@ class set:
 class api:
    def GET(self):
       return "API not yet implemented"
+
+class snooze:
+   def GET(self):
+      return "SNOOZE not yet implemented"
+
+class endalarm:
+   def GET(self):
+      return "SNOOZE not yet implemented"
 
 class WebApplication(threading.Thread):
    def __init__(self, alarmThread):
