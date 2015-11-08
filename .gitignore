@@ -1,0 +1,16 @@
+.svn/
+*.pyc
+Adafruit_7Segment.py
+Adafruit_I2C.py
+Adafruit_LEDBackpack.py
+CalendarCredentials.py
+LCDControl
+RpiLcdBackpack
+TSL2561.py
+alarmpi/
+calendar.dat
+gaugette
+mplayer
+settings.db
+sounds/
+
