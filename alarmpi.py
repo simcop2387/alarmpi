@@ -17,10 +17,10 @@ log.addHandler(stream)
 import time
 import datetime
 import threading
-import ClockThread
+#import ClockThread
 import AlarmThread
-import LcdThread
-import BrightnessThread
+#import LcdThread
+#import BrightnessThread
 import Settings
 import MediaPlayer
 from Web import WebApplication
@@ -47,25 +47,25 @@ class AlarmPi:
       media = MediaPlayer.MediaPlayer()
       media.playVoice('Starting up')
 
-      log.debug("Loading clock")
-      clock = ClockThread.ClockThread()
-      clock.setDaemon(True)
+#      log.debug("Loading clock")
+#      clock = ClockThread.ClockThread()
+#      clock.setDaemon(True)
 
       log.debug("Loading alarm control")
       alarm = AlarmThread.AlarmThread(weather)
       alarm.setDaemon(True)
 
-      log.debug("Loading LCD")
-      lcd = LcdThread.LcdThread(alarm, self.stop, weather)
-      lcd.setDaemon(True)
-      lcd.start()
+#      log.debug("Loading LCD")
+#      lcd = LcdThread.LcdThread(alarm, self.stop, weather)
+#      lcd.setDaemon(True)
+#      lcd.start()
 
-      log.debug("Loading brightness control")
-      bright = BrightnessThread.BrightnessThread()
-      bright.setDaemon(True)
-      bright.registerControlObject(clock.segment.disp)
-      bright.registerControlObject(lcd)
-      bright.start()
+#      log.debug("Loading brightness control")
+#      bright = BrightnessThread.BrightnessThread()
+#      bright.setDaemon(True)
+#      bright.registerControlObject(clock.segment.disp)
+#      bright.registerControlObject(lcd)
+#      bright.start()
 
       # If there's a manual alarm time set in the database, then load it
       manual = settings.getInt('manual_alarm')
@@ -76,8 +76,8 @@ class AlarmPi:
          log.info("Loaded previously set manual alarm time of %s",alarmTime)
          alarm.manualSetAlarm(alarmTime)
 
-      log.debug("Starting clock")
-      clock.start()
+#      log.debug("Starting clock")
+#      clock.start()
 
       log.debug("Starting alarm control")
       alarm.start()
@@ -101,9 +101,9 @@ class AlarmPi:
       log.info("Stopping all services")
       web.stop()
       alarm.stop()
-      clock.stop()
-      lcd.stop()
-      bright.stop()
+ #     clock.stop()
+ #     lcd.stop()
+ #     bright.stop()
 
       log.info("Shutdown complete, now exiting")
 
