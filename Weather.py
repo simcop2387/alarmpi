@@ -15,7 +15,7 @@ class WeatherFetcher:
       self.settings = Settings.Settings()
 
    def getWeather(self):
-      if(self.cache is None or self.cacheTimeout is None or self.cacheTimeout < datetime.datetime.now(pytz.timezone('Europe/London'))):
+      if(self.cache is None or self.cacheTimeout is None or self.cacheTimeout < datetime.datetime.now(pytz.timezone('America/Los_Angeles'))):
          log.info("Weather cache expired or doesn't exist, re-fetching")
          weather = Weather()
 
@@ -46,7 +46,7 @@ class WeatherFetcher:
 
          log.debug("Generated weather: %s" % (weather))
    
-         timeout = datetime.datetime.now(pytz.timezone('Europe/London'))
+         timeout = datetime.datetime.now(pytz.timezone('America/Los_Angeles'))
          timeout += datetime.timedelta(minutes=30) # Cache for 30 minutes
          self.cacheTimeout = timeout
 

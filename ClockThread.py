@@ -19,7 +19,7 @@ class ClockThread(threading.Thread):
 
    def run(self):
       while(not self.stopping):
-          now = datetime.datetime.now(pytz.timezone('Europe/London'))
+          now = datetime.datetime.now(pytz.timezone('America/Los_Angeles'))
           hour = now.hour
 
           minute = now.minute
