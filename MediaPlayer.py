@@ -69,12 +69,12 @@ class MediaPlayer:
          log.info("Sound effects disabled, not playing voice")
          return
       log.info("Playing voice: '%s'" % (text))
-      play = subprocess.Popen('/usr/bin/espeak "%s"' % (text), shell=True)
+      play = subprocess.Popen('/usr/bin/espeak "%s" >& /dev/null' % (text), shell=True)
 
    # Play some speech. Warning: Blocks until we're done speaking
    def playSpeech(self,text):
       log.info("Playing speech: '%s'" % (text))
-      play = subprocess.Popen('/usr/bin/espeak "%s"' % (text), shell=True)
+      play = subprocess.Popen('/usr/bin/espeak "%s" >& /dev/null' % (text), shell=True)
       play.wait()
 
    def stopPlayer(self):

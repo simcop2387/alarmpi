@@ -44,7 +44,7 @@ class AlarmThread(threading.Thread):
       self.stopping=True
 
    def isAlarmSounding(self):
-      return (self.media.playerActive() and self.nextAlarm is not None and self.nextAlarm < datetime.datetime.now(pytz.timezone('Europe/London')))
+      return (self.media.playerActive() and self.nextAlarm is not None and self.nextAlarm < datetime.datetime.now(pytz.timezone('America/Los_Angeles')))
 
    def isSnoozing(self):
       return self.snoozing
@@ -56,7 +56,7 @@ class AlarmThread(threading.Thread):
       log.info("Snoozing alarm for %s minutes", self.settings.getInt('snooze_length'))
       self.silenceAlarm()
 
-      alarmTime = datetime.datetime.now(pytz.timezone('Europe/London'))
+      alarmTime = datetime.datetime.now(pytz.timezone('America/Los_Angeles'))
       alarmTime += datetime.timedelta(minutes=self.settings.getInt('snooze_length'))
       self.setAlarmTime(alarmTime)
       self.snoozing = True
@@ -66,7 +66,7 @@ class AlarmThread(threading.Thread):
    def soundAlarm(self):
       log.info("Alarm triggered")
       self.media.soundAlarm(self)
-      timeout = datetime.datetime.now(pytz.timezone('Europe/London'))
+      timeout = datetime.datetime.now(pytz.timezone('America/Los_Angeles'))
       timeout += datetime.timedelta(minutes=self.settings.getInt('alarm_timeout'))
       self.alarmTimeout = timeout
 
@@ -80,7 +80,7 @@ class AlarmThread(threading.Thread):
       if self.settings.getInt('weather_on_alarm')==1:
          log.debug("Playing weather information")
 
-         now = datetime.datetime.now(pytz.timezone('Europe/London'))
+         now = datetime.datetime.now(pytz.timezone('America/Los_Angeles'))
 
          weather = ""
          try:
@@ -197,7 +197,7 @@ class AlarmThread(threading.Thread):
 
    # Number of seconds until alarm is triggered
    def alarmInSeconds(self):
-      now = datetime.datetime.now(pytz.timezone('Europe/London'))
+      now = datetime.datetime.now(pytz.timezone('America/Los_Angeles'))
       if self.nextAlarm is None:
          return -1
 
@@ -209,7 +209,7 @@ class AlarmThread(threading.Thread):
 
    # Return a line of text describing the alarm state
    def getMenuLine(self):
-      now = datetime.datetime.now(pytz.timezone('Europe/London'))
+      now = datetime.datetime.now(pytz.timezone('America/Los_Angeles'))
       message = ""
 
       if self.nextAlarm is not None:
@@ -239,7 +239,7 @@ class AlarmThread(threading.Thread):
 
    def run(self):
       while(not self.stopping):
-          now = datetime.datetime.now(pytz.timezone('Europe/London'))
+          now = datetime.datetime.now(pytz.timezone('America/Los_Angeles'))
 
           if(self.nextAlarm is not None and self.fromEvent and self.alarmInSeconds() < 3600 and not self.travelCalculated):
              # We're inside 1hr of an event alarm being triggered, and we've not taken into account the current traffic situation
