@@ -9,4 +9,7 @@ $def with (content)
 <hr>
 $:content
 <hr>
-[<a href='/'>Home</a>] [<a href='/settings'>Settings</a>] [<a href='/reset'>Reset Alarm</a>] [<a href='/endalarm'>End Alarm</a>] [<a href='/snooze'>Snooze alarm</a>]
+[<a href='/'>Home</a>] [<a href='/settings'>Settings</a>] [<a href='/reset'>Reset Alarm</a>] 
+
+<form style="float: left" action="/endalarm" method="POST"><input type="submit" value="End Alarm" /></form>
+<form style="float: left" action="/snooze" method="POST"><input type="submit" value="Snooze Alarm" /></form>

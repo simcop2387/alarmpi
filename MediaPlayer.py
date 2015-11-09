@@ -6,8 +6,8 @@ import logging
 
 log = logging.getLogger('root')
 
-PANIC_ALARM = '/usr/share/scratch/Media/Sounds/Music Loops/GuitarChords2.mp3'
-FX_DIRECTORY = '/root/sounds/'
+PANIC_ALARM = '/home/pi/alarm/alarmpi/sounds/alarm.mp3'
+FX_DIRECTORY = '/home/pi/alarm/alarmpi/sounds/'
 
 class MediaPlayer:
 

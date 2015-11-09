@@ -1,3 +1,4 @@
+# vim: tabstop=8 expandtab shiftwidth=4 softtabstop=4
 import web
 from web import form
 import time
@@ -31,7 +32,7 @@ class index:
       alarmTime = ""
 
       if nextAlarm is not None:
-         alarmTime = nextAlarm.strftime("%I:%M")
+         alarmTime = nextAlarm.strftime("%H%M")
 
       return form.Form(
          form.Textbox("time",
@@ -211,13 +212,18 @@ class api:
    def GET(self):
       return "API not yet implemented"
 
-class snooze:
-   def GET(self):
-      return "SNOOZE not yet implemented"
+class snooze(index):
+   def POST(self):
+       global alarm
+       alarm.snooze()
+       return self.GET()
 
-class endalarm:
-   def GET(self):
-      return "SNOOZE not yet implemented"
+
+class endalarm(index):
+   def POST(self):
+      global alarm
+      alarm.stopAlarm()
+      return self.GET()
 
 class WebApplication(threading.Thread):
    def __init__(self, alarmThread):
