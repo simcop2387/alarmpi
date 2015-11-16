@@ -246,7 +246,9 @@ class AlarmThread(threading.Thread):
              # We're inside 1hr of an event alarm being triggered, and we've not taken into account the current traffic situation
              self.travelAdjustAlarm()
 
-          self.nextAlarm = self.nextAlarm.replace(tzinfo=timezone('America/Los_Angeles'))
+          if(self.nextAlarm is not None):
+             self.nextAlarm = self.nextAlarm.replace(tzinfo=timezone('America/Los_Angeles'))
+
           if(self.nextAlarm is not None and self.nextAlarm < now and not self.media.playerActive()):
              self.soundAlarm()
 
